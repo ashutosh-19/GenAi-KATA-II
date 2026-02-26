@@ -1,0 +1,112 @@
+﻿:root {
+  --bg: #f4f8f7;
+  --card: #ffffff;
+  --text: #102120;
+  --muted: #5d7470;
+  --accent: #0b7d68;
+  --accent-2: #ffb547;
+  --danger: #b63a3a;
+  --line: #d7e3e0;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top right, #d8f0ea 0, transparent 42%), var(--bg);
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h1 { margin: 0 0 16px; }
+h2 { margin: 0 0 10px; font-size: 1.05rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 8px 16px rgba(16, 33, 32, 0.05);
+}
+
+label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+input, select, textarea, button {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 10px;
+  font: inherit;
+}
+
+textarea { min-height: 110px; resize: vertical; }
+button {
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+}
+.table-wrap button { width: auto; }
+button.secondary { background: #2f4c47; }
+button.warn { background: var(--danger); }
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.stack { display: grid; gap: 8px; }
+.inline { display: flex; gap: 8px; align-items: center; }
+
+.table-wrap { max-height: 260px; overflow: auto; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; font-size: 0.9rem; border-bottom: 1px solid var(--line); padding: 8px; }
+th { background: #f0f6f4; position: sticky; top: 0; }
+
+.pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.pill.Feature { background: #e5f4ff; color: #045b95; }
+.pill.Bug { background: #ffe8e8; color: #8e1e1e; }
+.pill.Task { background: #efeaf9; color: #4f2f9e; }
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+ul { margin: 0; padding-left: 18px; }
+pre {
+  white-space: pre-wrap;
+  background: #f0f6f4;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+@media (max-width: 960px) {
+  .grid, .result-grid { grid-template-columns: 1fr; }
+}

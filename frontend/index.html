@@ -1,0 +1,183 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sprint Review Feedback Intelligence</title>
+    <link rel="stylesheet" href="/frontend/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <h1>AI-Powered Sprint Review Feedback Intelligence</h1>
+      <div class="grid">
+        <section class="card stack">
+          <h2>Action Items</h2>
+          <form id="addActionItemForm" class="stack">
+            <div class="row">
+              <div>
+                <label for="itemId">ID</label>
+                <input id="itemId" placeholder="US-101" />
+              </div>
+              <div>
+                <label for="itemType">Type</label>
+                <select id="itemType">
+                  <option>Feature</option>
+                  <option>Bug</option>
+                  <option>Task</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="itemTitle">Title</label>
+              <input id="itemTitle" placeholder="Improve login flow" />
+            </div>
+            <div>
+              <label for="itemDescription">Description</label>
+              <textarea id="itemDescription" placeholder="Story details"></textarea>
+            </div>
+            <div>
+              <label for="itemCriteria">Acceptance Criteria (one per line)</label>
+              <textarea id="itemCriteria" placeholder="Given...\nWhen...\nThen..."></textarea>
+            </div>
+            <button type="submit">Save Action Item</button>
+          </form>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Type</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="actionItemsBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card stack">
+          <h2>Transcript and Analysis</h2>
+          <div>
+            <label for="transcript">Meeting Transcript</label>
+            <textarea id="transcript" placeholder="Paste sprint review transcript"></textarea>
+          </div>
+          <div class="inline">
+            <input id="useMock" type="checkbox" checked style="width: auto" />
+            <label for="useMock" style="margin: 0">Use mock mode</label>
+          </div>
+          <div class="row">
+            <button id="analyzeBtn" type="button">Analyze Feedback</button>
+            <button id="momBtn" class="secondary" type="button">Generate MOM</button>
+          </div>
+          <div>
+            <label for="filterType">Filter Results</label>
+            <select id="filterType">
+              <option>All</option>
+              <option>Feature</option>
+              <option>Bug</option>
+              <option>Task</option>
+            </select>
+          </div>
+        </section>
+      </div>
+
+      <section class="card" style="margin-top: 16px">
+        <h2>Analysis Output</h2>
+        <div class="inline" style="margin-bottom: 8px">
+          <strong>Last Analysis Run ID:</strong>
+          <span id="lastRunId">N/A</span>
+        </div>
+        <div class="result-grid">
+          <div>
+            <h2>Mapped Feedback</h2>
+            <ul id="mappedList"></ul>
+          </div>
+          <div>
+            <h2>Unmapped Feedback</h2>
+            <ul id="unmappedList"></ul>
+          </div>
+          <div>
+            <h2>Suggestions</h2>
+            <ul id="suggestionsList"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top: 16px">
+        <h2>Manual Mapping</h2>
+        <form id="manualMappingForm" class="row">
+          <input id="manualMappingId" type="hidden" />
+          <div>
+            <label for="manualRunId">Analysis Run ID</label>
+            <input id="manualRunId" placeholder="Auto-filled after analyze" />
+          </div>
+          <div>
+            <label for="manualActionItemId">Action Item ID</label>
+            <input id="manualActionItemId" placeholder="US-101" />
+          </div>
+          <div>
+            <label for="manualType">Feedback Type</label>
+            <select id="manualType">
+              <option>Feature</option>
+              <option>Bug</option>
+              <option>Task</option>
+            </select>
+          </div>
+          <div>
+            <label for="manualFeedbackText">Feedback Text</label>
+            <input id="manualFeedbackText" placeholder="Exact unmapped feedback text" />
+          </div>
+          <div style="align-self: end">
+            <button type="submit">Save Manual Mapping</button>
+          </div>
+          <div style="align-self: end">
+            <button id="reloadRunBtn" class="secondary" type="button">Reload Run</button>
+          </div>
+        </form>
+        <div class="table-wrap" style="margin-top: 10px">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Run</th>
+                <th>Type</th>
+                <th>Action Item</th>
+                <th>Feedback</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="manualMappingsBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top: 16px">
+        <h2>Analysis History</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Run ID</th>
+                <th>Created</th>
+                <th>Mapped</th>
+                <th>Unmapped</th>
+                <th>Suggestions</th>
+                <th>Transcript Preview</th>
+              </tr>
+            </thead>
+            <tbody id="historyBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top: 16px">
+        <h2>Minutes of Meeting</h2>
+        <pre id="momText">No MOM generated yet.</pre>
+      </section>
+    </main>
+
+    <script src="/frontend/app.js"></script>
+  </body>
+</html>
