@@ -89,8 +89,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-if not frontend_dir.exists():
-
 if frontend_dir.exists():
     app.mount("/frontend", StaticFiles(directory=frontend_dir), name="frontend")
 
